@@ -13,13 +13,11 @@ const App = () => {
       <Route path="/" element={<LoginPage />} />
       <Route path="/main" element={<SideNavLayout />}>
         <Route path="overview" element={<OverViewPage />} />
-
-        {/* <Route path="/create/notebook" element={<NotebookPage />} /> */}
         <Route path="notebook/:documentId" element={<NotebookPage />} />
-
         <Route path="recent" element={<RecentPage />} />
         <Route path="your-notebooks" element={<YourNotebooksPage />} />
         <Route path="shared-with-you" element={<SharedWithYouPage />} />
+        <Route path="*" element={<OverViewPage />} />
       </Route>
     </Routes>
   );

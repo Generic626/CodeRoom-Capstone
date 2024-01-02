@@ -11,4 +11,16 @@ const app = express();
 app.use(bodyParser.json());
 
 // routers
-app.use("/api/notebook", placesRoutes);
+app.use("/api/notebook", notebookRoutes);
+
+mongoose.set("strictQuery", false);
+mongoose
+  .connect(
+    "mongodb+srv://codeboard-admin:KrWyIaUxx5kuxf0b@cluster0.nqg35.mongodb.net/coderoom?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    app.listen(5001, () => {
+      console.log("Sucessful");
+    });
+  })
+  .catch();

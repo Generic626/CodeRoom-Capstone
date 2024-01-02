@@ -8,14 +8,20 @@ const createNotebook = async (req, res, next) => {
   const { lang, user } = req.body;
   // 2. create notebook template based on language
   const templateCode = {
-    python: "# Write code as you please",
-    javascript: "// Write code as you please",
+    python: {
+      title: "Template Notebook - python",
+      code: "# Write code as you please",
+    },
+    javascript: {
+      title: "Template Notebook - javascript",
+      code: "// Write code as you please",
+    },
   };
   // 3. save notebook to mongoDB
   const today = new Date();
   const newNotebook = new Notebook({
-    code: templateCode[lang],
-    title: "Template Notebook",
+    code: templateCode[lang].code,
+    title: templateCode[lang].title,
     type: lang,
     createdDate: today,
     author: { email: user.email, avatar: user.avatar },
@@ -27,6 +33,8 @@ const createNotebook = async (req, res, next) => {
     const notebookId = savedNotebook._id;
     res.status(201).json({ id: notebookId });
   });
+
+  // TBC error
 };
 
 exports.createNotebook = createNotebook;

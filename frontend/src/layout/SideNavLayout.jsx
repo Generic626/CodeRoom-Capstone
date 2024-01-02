@@ -27,11 +27,13 @@ const SideNavLayout = () => {
             langTitle="Python"
             langIcon="/assets/python.png"
             langDesc="General purpose"
+            type="python"
           />
           <LanguageCard
             langTitle="JavaScript"
             langIcon="/assets/javascript.png"
             langDesc="Web Development"
+            type="javascript"
           />
         </div>
       </Modal>
