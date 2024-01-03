@@ -1,10 +1,6 @@
-import { useState, useEffect } from "react";
-
 const LanguageCard = (props) => {
-  const [isLoading, setIsLoading] = useState(false);
-
   return (
-    <div className="rounded-md bg-[#504C4C] w-[250px] h-[150px] p-4 cursor-pointer text-white ">
+    <div className="rounded-md bg-[#504C4C] w-[250px] h-[150px] p-4 cursor-pointer text-white">
       <img
         src={props.langIcon}
         alt="Language Icon"

@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import SideNav from "../components/SideNav";
 import { Outlet } from "react-router";
 import Modal from "../components/Modal";
 import LanguageCard from "../components/LanguageCard";
+import LoadingPage from "../pages/LoadingPage";
 
 const SideNavLayout = () => {
   // Sets the page title
@@ -12,6 +13,9 @@ const SideNavLayout = () => {
       document.title = "CodeRoom"; // Reset the title when the component unmounts
     };
   }, []);
+
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <div className="w-screen h-screen flex">
       {/* Side Navigational Bar */}
@@ -22,21 +26,25 @@ const SideNavLayout = () => {
       </div>
       {/* Modal */}
       <Modal modalTitle="Create a Notebook">
-        <div className="mt-4 gap-3 flex">
-          <LanguageCard
-            langTitle="Python"
-            langIcon="/assets/python.png"
-            langDesc="General purpose"
-            type="python"
-          />
-          <LanguageCard
-            langTitle="JavaScript"
-            langIcon="/assets/javascript.png"
-            langDesc="Web Development"
-            type="javascript"
-          />
-        </div>
+        {!isLoading && (
+          <div className="mt-4 gap-3 flex">
+            <LanguageCard
+              langTitle="Python"
+              langIcon="/assets/python.png"
+              langDesc="General purpose"
+              type="python"
+            />
+            <LanguageCard
+              langTitle="JavaScript"
+              langIcon="/assets/javascript.png"
+              langDesc="Web Development"
+              type="javascript"
+            />
+          </div>
+        )}
       </Modal>
+      {/* Display loading screens */}
+      {isLoading && <LoadingPage />}
     </div>
   );
 };
