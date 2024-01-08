@@ -28,6 +28,8 @@ const createNotebook = async (req, res, next) => {
     sharedWith: {},
     lastOpenAt: today,
   });
+
+  console.log("Attempting to save");
   // 4. return created notebook's id back
   newNotebook.save().then((savedNotebook) => {
     const notebookId = savedNotebook._id;

@@ -1,5 +1,6 @@
 import pythonIcon from "../assets/python.png";
 import jsIcon from "../assets/js.png";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const NotebookCard = ({ data }) => {
   const code_lang_icon = data.type === "python" ? pythonIcon : jsIcon;
@@ -7,13 +8,18 @@ const NotebookCard = ({ data }) => {
   return (
     <div className="rounded-lg bg-[#504C4C] h-[180px]  p-4 text-white flex flex-col justify-between cursor-pointer">
       {/* Card Title */}
-      <div className="flex items-center">
-        <img src={code_lang_icon} alt="Code Lang Icon" className="mr-2" />
-        <div>
-          {data.title.length < 20
-            ? data.title
-            : data.title.substring(0, 20) + "..."}
+      <div className="flex items-center justify-between">
+        <div className="flex">
+          {/* Language Icon + Notebook Title */}
+          <img src={code_lang_icon} alt="Code Lang Icon" className="mr-2" />
+          <div>
+            {data.title.length < 20
+              ? data.title
+              : data.title.substring(0, 20) + "..."}
+          </div>
         </div>
+        {/* Trashcan Button */}
+        <FaRegTrashAlt className="text-red-500" />
       </div>
 
       {/* Author + Last Open At*/}

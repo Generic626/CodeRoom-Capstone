@@ -6,11 +6,13 @@ import RecentPage from "./pages/RecentPage";
 import YourNotebooksPage from "./pages/YourNotebooksPage";
 import SharedWithYouPage from "./pages/SharedWithYouPage";
 import OverViewPage from "./pages/OverViewPage";
+import CreateAccountPage from "./pages/CreateAccountPage";
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
+      <Route path="/create-account" element={<CreateAccountPage />} />
       <Route path="/main" element={<SideNavLayout />}>
         <Route path="overview" element={<OverViewPage />} />
         <Route path="notebook/:documentId" element={<NotebookPage />} />

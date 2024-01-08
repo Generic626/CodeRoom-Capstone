@@ -2,7 +2,7 @@ const Modal = (props) => {
   return (
     <dialog
       id="my_modal_1"
-      className="w-[60%] h-[50%] p-8 rounded-lg bg-[#333333] "
+      className={`${props.modalWidth} ${props.modalHeight} p-8 rounded-lg ${props.modalBgColor}`}
     >
       <div className="modal-box flex flex-col h-full">
         <div className="w-full flex justify-between">

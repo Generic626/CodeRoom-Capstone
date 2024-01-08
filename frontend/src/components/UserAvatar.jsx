@@ -47,7 +47,7 @@ const UserAvatar = () => {
                               : "text-gray-700"
                           } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                         >
-                          Account profile
+                          Account
                         </a>
                       )}
                     </Menu.Item>

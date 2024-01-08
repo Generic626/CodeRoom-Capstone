@@ -1,6 +1,9 @@
 const LanguageCard = (props) => {
   return (
-    <div className="rounded-md bg-[#504C4C] w-[250px] h-[150px] p-4 cursor-pointer text-white">
+    <div
+      className="rounded-md bg-[#504C4C] w-[250px] h-[150px] p-4 cursor-pointer text-white"
+      onClick={props.onClickHandler}
+    >
       <img
         src={props.langIcon}
         alt="Language Icon"

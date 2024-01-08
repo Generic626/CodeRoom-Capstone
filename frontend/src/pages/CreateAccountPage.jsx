@@ -30,9 +30,11 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function LoginPage() {
+export default function CreateAccountPage() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [secondPwd, setSecondPwd] = useState("");
   const [errors, setErrors] = useState({});
 
   // Sets the page title
@@ -136,7 +138,7 @@ export default function LoginPage() {
               />
             </Box>
             <Typography component="h1" variant="h5">
-              Welcome To CodeRoom
+              Create Account
             </Typography>
             <Box
               component="form"
@@ -144,6 +146,22 @@ export default function LoginPage() {
               onSubmit={handleSubmit}
               sx={{ mt: 1 }}
             >
+              {/* Name */}
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="name"
+                label="Name"
+                name="name"
+                autoFocus
+                autoComplete="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                error={errors.name != undefined}
+                helperText={errors.name}
+              />
+              {/* Email */}
               <TextField
                 margin="normal"
                 required
@@ -151,13 +169,12 @@ export default function LoginPage() {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoFocus
-                autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 error={errors.email != undefined}
                 helperText={errors.email}
               />
+              {/* Password */}
               <TextField
                 margin="normal"
                 required
@@ -172,30 +189,40 @@ export default function LoginPage() {
                 error={errors.password != undefined}
                 helperText={errors.password}
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+              {/* Re-confirm password */}
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="secondPwd"
+                label="Re-enter your password"
+                type="password"
+                id="secondPwd"
+                value={secondPwd}
+                onChange={(e) => setSecondPwd(e.target.value)}
+                error={errors.secondPwd != undefined}
+                helperText={errors.secondPwd}
               />
+
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Sign-Up
               </Button>
               {errors.login && (
                 <Typography className=" text-red-500 text-xs">
                   {errors.login}
                 </Typography>
               )}
-
               <NavLink
-                to="/create-account"
+                to="/"
                 className={(isActive) => (isActive ? "active" : "")}
               >
                 <div className="text-sm underline">
-                  Don&#39;t have an account?
+                  Already have an account?
                 </div>
               </NavLink>
               <Copyright sx={{ mt: 5 }} />

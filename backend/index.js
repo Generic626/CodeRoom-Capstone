@@ -1,6 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
+require("dotenv").config();
+
 const notebookRoutes = require("./routes/notebook-routes");
 
 // establish Express Server
@@ -9,6 +12,8 @@ const app = express();
 // middleware to be used
 // Parse for JSON
 app.use(bodyParser.json());
+// enable cors
+app.use(cors());
 
 // routers
 app.use("/api/notebook", notebookRoutes);
